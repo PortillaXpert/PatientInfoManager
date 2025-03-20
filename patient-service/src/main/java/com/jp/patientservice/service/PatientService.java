@@ -1,5 +1,6 @@
 package com.jp.patientservice.service;
 
+import com.jp.patientservice.dto.PatientResponseDTO;
 import com.jp.patientservice.models.Patient;
 import com.jp.patientservice.repository.PatientRepository;
 import org.springframework.stereotype.Service;
