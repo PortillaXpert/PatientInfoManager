@@ -28,7 +28,7 @@ private String address;
 private LocalDate dateOfBirth;
 
 @NotNull
-private LocalDate registerDate;
+private LocalDate registeredDate;
 
     public UUID getId() {
         return id;
@@ -66,11 +66,11 @@ private LocalDate registerDate;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public LocalDate getRegisterDate() {
-        return registerDate;
+    public LocalDate getRegisteredDate() {
+        return registeredDate;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
-        this.registerDate = registerDate;
+    public void setRegisteredDate(LocalDate registerDate) {
+        this.registeredDate = registerDate;
     }
 }
