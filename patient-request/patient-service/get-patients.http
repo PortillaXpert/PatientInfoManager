@@ -1,4 +1,6 @@
-### GET request to get all patients
+# Retrieve all patients
+# Sends a GET request to retrieve a list of all registered patients.
+# The response will contain an array of PatientResponseDTO objects.
 GET http://localhost:4000/patients
 
 ###

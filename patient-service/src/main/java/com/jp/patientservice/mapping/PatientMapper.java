@@ -6,7 +6,16 @@ import com.jp.patientservice.models.Patient;
 
 import java.time.LocalDate;
 
+/**
+ * Utility class for mapping between Patient entity and DTOs.
+ */
 public class PatientMapper {
+
+    /**
+     * Converts a Patient entity to a PatientResponseDTO.
+     * @param patient The Patient entity to convert.
+     * @return The corresponding PatientResponseDTO.
+     */
     public static PatientResponseDTO toDTO(Patient patient) {
         PatientResponseDTO patientDTO = new PatientResponseDTO();
         patientDTO.setId(patient.getId().toString());
@@ -17,6 +26,11 @@ public class PatientMapper {
         return patientDTO;
     }
 
+    /**
+     * Converts a PatientRequestDTO to a Patient entity.
+     * @param patientRequestDTO The DTO containing patient data.
+     * @return The corresponding Patient entity.
+     */
     public static Patient toModel(PatientRequestDTO patientRequestDTO) {
         Patient patient = new Patient();
         patient.setName(patientRequestDTO.getName());

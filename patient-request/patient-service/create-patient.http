@@ -1,4 +1,8 @@
-### POST request to example server
+### API Requests for Patient Management System
+
+# Create a new patient
+# Sends a POST request to create a new patient record.
+# The request body must contain the patient's name, email, address, date of birth, and registration date.
 POST http://localhost:4000/patients
 Content-Type: application/json
 

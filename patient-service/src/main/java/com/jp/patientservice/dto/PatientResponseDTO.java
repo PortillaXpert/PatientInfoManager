@@ -1,7 +1,9 @@
 package com.jp.patientservice.dto;
 
-import java.time.LocalDate;
 
+/**
+ * Data Transfer Object for returning patient details in API responses.
+ */
 public class PatientResponseDTO {
     private String id;
     private String name;
@@ -9,6 +11,9 @@ public class PatientResponseDTO {
     private String address;
     private String dateOfBirth;
 
+    /**
+     * Getters and Setters
+     */
     public String getId() {
         return id;
     }

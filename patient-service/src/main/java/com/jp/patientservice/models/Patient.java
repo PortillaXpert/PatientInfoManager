@@ -7,29 +7,38 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.UUID;
 
+
+    /**
+     * Entity representing a Patient in the system.
+     * Uses JPA annotations for persistence and validation constraints to ensure data integrity.
+     */
 @Entity
 public class Patient {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-@NotNull
-private String name;
+    @NotNull
+    private String name;
 
-@NotNull
-@Email
-@Column(unique = true)
-private String email;
+    @NotNull
+    @Email
+    @Column(unique = true)
+    private String email;
 
-@NotNull
-private String address;
+    @NotNull
+    private String address;
 
-@NotNull
-private LocalDate dateOfBirth;
+    @NotNull
+    private LocalDate dateOfBirth;
 
-@NotNull
-private LocalDate registeredDate;
+    @NotNull
+    private LocalDate registeredDate;
 
+
+    /**
+     * Getters and Setters
+     */
     public UUID getId() {
         return id;
     }

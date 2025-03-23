@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Repository interface for managing Patient entities.
+ * Extends JpaRepository to provide CRUD operations and database interaction.
+ */
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, UUID> {
 

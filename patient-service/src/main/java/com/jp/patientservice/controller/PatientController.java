@@ -9,23 +9,40 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST Controller for handling patient-related requests.
+ */
 @RestController
 @RequestMapping("/patients")
 public class PatientController {
 
     private final PatientService patientService;
 
-
+    /**
+     * Constructor for injecting PatientService dependency.
+     *
+     * @param patientService Service layer handling patient business logic.
+     */
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
 
+    /**
+     * Retrieves a list of all patients.
+     *
+     * @return ResponseEntity containing a list of PatientResponseDTO.
+     */
     @GetMapping
     public ResponseEntity<List<PatientResponseDTO>> getPatients() {
         List<PatientResponseDTO> patients = patientService.getPatients();
         return ResponseEntity.ok().body(patients);
     }
 
+    /**
+     * Creates a new patient record.
+     * @param patientRequestDTO The request body containing patient details.
+     * @return ResponseEntity containing the created PatientResponseDTO.
+     */
     @PostMapping
     public ResponseEntity<PatientResponseDTO> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
         PatientResponseDTO patientResponseDTO = patientService.createPatient(patientRequestDTO);
