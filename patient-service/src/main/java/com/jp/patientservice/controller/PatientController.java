@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * REST Controller for handling patient-related requests.
@@ -46,6 +47,19 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<PatientResponseDTO> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
         PatientResponseDTO patientResponseDTO = patientService.createPatient(patientRequestDTO);
+        return ResponseEntity.ok().body(patientResponseDTO);
+    }
+
+    /**
+     * Updates an existing patient's information.
+     *
+     * @param id The UUID of the patient to update.
+     * @param patientRequestDTO The updated patient data.
+     * @return The updated patient details wrapped in a ResponseEntity.
+     */
+    @PostMapping("/{id}")
+    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable UUID id, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+        PatientResponseDTO patientResponseDTO = patientService.updatePatient(id, patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
     }
 }

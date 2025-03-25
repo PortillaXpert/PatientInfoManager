@@ -51,4 +51,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    /**
+     * Handles exceptions when a patient is not found.
+     *
+     * @param ex The exception triggered when a patient ID is not found.
+     * @return A ResponseEntity containing an error message.
+     */
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handlePatientNotFoundException(
+            PatientNotFoundException ex){
+        // Log a warning when an email duplication occurs (remove in production if needed)
+        log.warn("Patient not found{}",ex.getMessage());
+        Map<String, String> errors = new HashMap<>();
+        errors.put("patient", "Patient not found");
+        return ResponseEntity.badRequest().body(errors);
+    }
+
 }
