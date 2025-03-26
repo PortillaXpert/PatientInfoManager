@@ -1,3 +1,5 @@
+### API Requests for Patient Management System
+
 # Retrieve all patients
 # Sends a GET request to retrieve a list of all registered patients.
 # The response will contain an array of PatientResponseDTO objects.

@@ -1,0 +1,12 @@
+### API Requests for Patient Management System
+PUT http://localhost:4000/patients/223e4567-e89b-12d3-a456-426614174011
+Content-Type: application/json
+
+{
+  "name": "Carlos Torres",
+  "email": "carTor@gmail.com",
+  "address": "343 La Paz",
+  "dateOfBirth": "1999-10-05"
+}
+
+###

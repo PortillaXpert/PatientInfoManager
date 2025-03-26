@@ -57,9 +57,11 @@ public class PatientController {
      * @param patientRequestDTO The updated patient data.
      * @return The updated patient details wrapped in a ResponseEntity.
      */
-    @PostMapping("/{id}")
-    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable UUID id, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
-        PatientResponseDTO patientResponseDTO = patientService.updatePatient(id, patientRequestDTO);
+    @PutMapping("/{id}")
+    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable UUID id,
+    @RequestBody PatientRequestDTO patientRequestDTO) {
+        PatientResponseDTO patientResponseDTO = patientService.updatePatient(id,
+                patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
     }
 }
