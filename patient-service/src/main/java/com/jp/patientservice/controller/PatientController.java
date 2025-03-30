@@ -64,4 +64,16 @@ public class PatientController {
                 patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
     }
+
+    /**
+     * Deletes a patient by ID.
+     *
+     * @param id The UUID of the patient to delete.
+     * @return A ResponseEntity with no content if the deletion was successful.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePatient(@PathVariable UUID id) {
+        patientService.deletePatient(id);
+        return ResponseEntity.noContent().build();
+    }
 }

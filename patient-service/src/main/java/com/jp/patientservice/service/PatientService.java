@@ -82,4 +82,13 @@ public class PatientService {
         Patient updatedPatient = patientRepository.save(patient);
         return PatientMapper.toDTO(updatedPatient);
     }
+
+    /**
+     * Deletes a patient from the database by their unique ID.
+     *
+     * @param id The UUID of the patient to be deleted.
+     */
+    public void deletePatient(UUID id) {
+        patientRepository.deleteById(id);
+    }
 }
