@@ -1,1 +1,1 @@
-Proyecto en seguimiento.￼Enter
+Proyecto en seguimiento.
