@@ -1,5 +1,8 @@
 package com.jp.patientservice.exception;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +23,17 @@ public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
+    @Operation(
+            summary = "Handles validation errors",
+            description = "Intercepts invalid request parameters and returns a structured error response",
+            responses = {
+                    @ApiResponse(responseCode = "400", description = "Validation error",
+                            content = @io.swagger.v3.oas.annotations.media.Content(
+                                    schema = @Schema(implementation = Map.class)))
+            }
+    )
     public ResponseEntity<Map<String, String>> handleValidationException(MethodArgumentNotValidException ex) {
 
-        /**
-         * Handles validation exceptions when request parameters fail validation.
-         *
-         * @param ex the exception triggered due to invalid method arguments
-         * @return a ResponseEntity containing a map of validation errors
-         */
         Map<String, String> errors = new HashMap<>();
         // Extracts field-specific error messages from validation exception
         ex.getBindingResult().getFieldErrors().forEach(
@@ -35,13 +41,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    /**
-     * Handles email duplication exceptions.
-     *
-     * @param ex the exception triggered when an email already exists
-     * @return a ResponseEntity containing a standardized error response
-     */
     @ExceptionHandler(EmailAlreadyExistsException.class)
+    @Operation(
+            summary = "Handles duplicate email errors",
+            description = "Throws an error when an email is already registered",
+            responses = {
+                    @ApiResponse(responseCode = "400", description = "Email already exists",
+                            content = @io.swagger.v3.oas.annotations.media.Content(
+                                    schema = @Schema(implementation = Map.class)))
+            }
+    )
     public ResponseEntity<Map<String, String>> handleEmailAlreadyExistsException(
             EmailAlreadyExistsException ex) {
         // Log a warning when an email duplication occurs (remove in production if needed)
@@ -51,13 +60,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    /**
-     * Handles exceptions when a patient is not found.
-     *
-     * @param ex The exception triggered when a patient ID is not found.
-     * @return A ResponseEntity containing an error message.
-     */
     @ExceptionHandler(PatientNotFoundException.class)
+    @Operation(
+            summary = "Handles patient not found errors",
+            description = "Returns an error response when a patient ID is not found",
+            responses = {
+                    @ApiResponse(responseCode = "404", description = "Patient not found",
+                            content = @io.swagger.v3.oas.annotations.media.Content(
+                                    schema = @Schema(implementation = Map.class)))
+            }
+    )
     public ResponseEntity<Map<String, String>> handlePatientNotFoundException(
             PatientNotFoundException ex){
         // Log a warning when an email duplication occurs (remove in production if needed)
