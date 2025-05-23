@@ -1,11 +1,10 @@
 package com.jp.patientservice.kafka;
 
-import com.jp.patientservice.model.Patient;
+//import com.jp.patientservice.model.Patient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import patient.events.PatientEvent;
 
 @Service
 public class KafkaProducer {
@@ -18,7 +17,7 @@ public class KafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendEvent(Patient patient) {
+   /* public void sendEvent(Patient patient) {
         PatientEvent event = PatientEvent.newBuilder()
                 .setPatientId(patient.getId().toString())
                 .setName(patient.getName())
@@ -31,5 +30,5 @@ public class KafkaProducer {
         } catch (Exception e) {
             log.error("Error sending PatientCreated event: {}", event);
         }
-    }
+    }*/
 }
